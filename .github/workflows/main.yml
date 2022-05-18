@@ -12,6 +12,7 @@ concurrency:
 jobs:
   test:
     strategy:
+      fail-fast: False
       matrix:
         distutils:
         - local
