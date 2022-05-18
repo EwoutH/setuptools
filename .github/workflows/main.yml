@@ -16,11 +16,12 @@ jobs:
         distutils:
         - local
         python:
-        - pypy-3.7
+        - pypy-3.9
         - 3.7
         - 3.8
         - 3.9
         - "3.10"
+        - "3.11-dev"
         platform:
         - ubuntu-latest
         - macos-latest
@@ -28,6 +29,9 @@ jobs:
         include:
         - platform: ubuntu-latest
           python: "3.10"
+          distutils: stdlib
+        - platform: ubuntu-latest
+          python: "3.11-dev"
           distutils: stdlib
     runs-on: ${{ matrix.platform }}
     env:
@@ -113,7 +117,7 @@ jobs:
         uses: actions/setup-python@v3
         with:
           # Use a release that is not very new but still have a long life:
-          python-version: "3.8"
+          python-version: "3.9"
       - name: Install tox
         run: |
           python -m pip install tox
